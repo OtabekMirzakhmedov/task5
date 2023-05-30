@@ -7,14 +7,16 @@ import Tools from './Tools'
 function App() {
   const [country, setCountry] = useState('');
   const [seed, setSeed] = useState('');
+  const [error, setError] = useState('');
 
-  const handleGenerateTable = (selectedCountry, selectedSeed) => {
-    setCountry(selectedCountry);
-    setSeed(selectedSeed);
-  }
   return (
     <Container>
-      <Tools onGenerateTable={handleGenerateTable} />
+      <Tools country={country}
+        setCountry={setCountry}
+        seed={seed}
+        setSeed={setSeed}
+        error={error}
+        setError={setError} />
       {country && seed && <FakeData country={country} seed={seed} />}
     </Container>
   );

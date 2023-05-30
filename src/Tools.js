@@ -9,13 +9,11 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Slider from '@mui/material/Slider';
 
-const Tools = () => {
-    const [country, setCountry] = useState('');
-  const [seed, setSeed] = useState('');
+const Tools = ({country, setCountry, seed, setSeed, error, setError }) => {
+
+
   const [sliderValue, setSliderValue] = useState(0);
   const [inputValue, setInputValue] = useState(0);
-  const [error, setError] = useState(0);
-
 
   const handleRandomSeed = () => {
     const randomSeed = Math.floor(Math.random() * 1000) + 1;

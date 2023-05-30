@@ -36,28 +36,10 @@ const FakeData = ({ country, seed }) => {
     
       const tableData = generateData();
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Index</th>
-          <th>Identifier</th>
-          <th>Name</th>
-          <th>Address</th>
-          <th>Phone</th>
-        </tr>
-      </thead>
-      <tbody>
-        {tableData.map((record) => (
-          <tr key={record.identifier}>
-            <td>{record.index}</td>
-            <td>{record.identifier}</td>
-            <td>{record.name}</td>
-            <td>{record.address}</td>
-            <td>{record.phone}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <div>{country} {seed}</div>
+
+
+
   )
 }
 
