@@ -1,46 +1,39 @@
 import React from 'react';
-import {allFakers } from '@faker-js/faker';
+import TableContainer from '@mui/material/TableContainer';
+import Paper from '@mui/material/Paper';
+import Table from '@mui/material/Table';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import TableCell from '@mui/material/TableCell';
+import TableBody from '@mui/material/TableBody';
 
-
-const FakeData = ({ country, seed }) => {
-    const generateData = () => {
-        let key;
-        switch (country) {
-          case 'poland':
-            key = 'pl';
-            break;
-          case 'spain':
-            key = 'es';
-            break;
-          case 'germany':
-            key = 'de';
-            break;
-          default:
-            key = 'es';
-        }
-        allFakers[key].seed(null);
-
-        let data = [];
-        for (let i = 1; i <= 20; i++) {
-          let record = {};
-          record.index = i;
-          record.identifier = allFakers[key].string.uuid();
-          record.name = allFakers[key].person.fullName(undefined, undefined, country);
-          record.address = allFakers[key].location.streetAddress();
-          record.phone = allFakers[key].phone.number();
-          data.push(record);
-        }
-
-        return data;
-      };
-    
-      const tableData = generateData();
+const FakeData = ({ data }) => {
   return (
-    <div>{country} {seed}</div>
+    <TableContainer component={Paper} sx={{ marginTop: '20px' }}>
+      <Table sx={{ minWidth: 650 }} aria-label="fake data table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Index</TableCell>
+            <TableCell>Identifier</TableCell>
+            <TableCell>Name</TableCell>
+            <TableCell>Address</TableCell>
+            <TableCell>Phone</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {data.map((record) => (
+            <TableRow key={record.identifier}>
+              <TableCell>{record.index}</TableCell>
+              <TableCell>{record.identifier}</TableCell>
+              <TableCell>{record.name}</TableCell>
+              <TableCell>{record.address}</TableCell>
+              <TableCell>{record.phone}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
+};
 
-
-
-  )
-}
-
-export default FakeData
+export default FakeData;

@@ -17,7 +17,7 @@ const Tools = ({country, setCountry, seed, setSeed, error, setError }) => {
 
   const handleRandomSeed = () => {
     const randomSeed = Math.floor(Math.random() * 1000) + 1;
-    setSeed(randomSeed.toString());
+    setSeed(randomSeed);
   };
 
   const handleSliderChange = (event, newValue) => {
